@@ -38,6 +38,7 @@ public class ProductController {
 
 
     @PUT
+    @Path("/{id}")
     @Transactional
     public Response changeProduct(@PathParam("id") Long id, ProductDTO productDTO){
         try {
@@ -50,6 +51,7 @@ public class ProductController {
     }
 
     @DELETE
+    @Path("/{id}")
     @Transactional
     public Response deleteProduct(@PathParam("id") Long id){
         try {

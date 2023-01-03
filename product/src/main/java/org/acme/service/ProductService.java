@@ -38,11 +38,11 @@ public class ProductService {
         ProductEntity productEntity = productRepository.findById(id);
 
         //popula as informações
-        productEntity.setName(productEntity.getName());
-        productEntity.setCategory(productEntity.getCategory());
-        productEntity.setModel(productEntity.getModel());
-        productEntity.setDescription(productEntity.getDescription());
-        productEntity.setPrice(productEntity.getPrice());
+        productEntity.setName(productDTO.getName());
+        productEntity.setCategory(productDTO.getCategory());
+        productEntity.setModel(productDTO.getModel());
+        productEntity.setDescription(productDTO.getDescription());
+        productEntity.setPrice(productDTO.getPrice());
 
         // salva no banco
         productRepository.persist(productEntity);
