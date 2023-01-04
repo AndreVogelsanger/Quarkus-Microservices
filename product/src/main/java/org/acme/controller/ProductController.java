@@ -23,6 +23,13 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ProductDTO findProductById(Long id){
+        return productService.getProductById(id);
+    }
+
     @POST
     @Transactional
     public Response saveProduct(ProductDTO productDTO){

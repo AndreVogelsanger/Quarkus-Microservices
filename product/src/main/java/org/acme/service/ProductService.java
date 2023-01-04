@@ -25,6 +25,10 @@ public class ProductService {
         return products;
     }
 
+    public ProductDTO getProductById(Long id){
+        return mapProductEntityToDTO(productRepository.findById(id));
+    }
+
 
 
     public void createNewProduct(ProductDTO productDTO){
