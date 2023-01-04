@@ -4,6 +4,7 @@ import jdk.javadoc.doclet.Reporter;
 import org.acme.dto.OrderDTO;
 import org.acme.service.OrderService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.GET;
@@ -21,6 +22,7 @@ public class OrderController {
     OrderService orderService;
 
     @GET
+    @RolesAllowed({"user","admin"})
     @Produces(MediaType.APPLICATION_JSON)
     public List<OrderDTO> getAllOrders(){
         return orderService.getAllOrders();
