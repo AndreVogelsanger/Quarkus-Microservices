@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+  app:
+    image: 'administrador/product:1.0.0-SNAPSHOT'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - QUARKUS_DATASOURCE_URL=jdbc:postgresql://db:5432/productdb
+      - QUARKUS_DATASOURCE_USERNAME=postgres
+      - QUARKUS_DATASOURCE_PASSWORD=1234
+      - QUARKUS_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - 8081:8081
+    networks:
+      - dock-db-test
+
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+    networks:
+      - dock-db-test
+
+networks:
+  dock-db-test:
+    external: true
+    name: dock-db-test
